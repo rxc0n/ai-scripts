@@ -1,0 +1,42 @@
+-- Original Lua script to be obfuscated
+local originalScript = [[
+-- Example function
+function greet(name)
+    print("Hello, " .. name .. "!")
+end
+
+-- Example usage
+greet("Scripter")
+
+-- Another example function
+function calculateSquare(num)
+    return num * num
+end
+
+-- Another example usage
+local result = calculateSquare(5)
+print("Square of 5 is: " .. result)
+]]
+
+-- Encryption key (change this to your preferred key)
+local encryptionKey = 0xAB
+
+-- Function to obfuscate Lua script using XOR encryption
+local function obfuscateScript(script, key)
+    local obfuscatedScript = ""
+    for i = 1, #script do
+        obfuscatedScript = obfuscatedScript .. string.char(bit.bxor(script:byte(i), key))
+    end
+    return obfuscatedScript
+end
+
+-- Obfuscate the original script
+local obfuscatedScript = obfuscateScript(originalScript, encryptionKey)
+
+-- Output the obfuscated script
+print("-- Obfuscated Lua script:")
+print(obfuscatedScript)
+
+-- Uncomment the next line to execute the obfuscated script
+-- load(obfuscatedScript)()
+-- this script is terrible would not recommend using this obf
